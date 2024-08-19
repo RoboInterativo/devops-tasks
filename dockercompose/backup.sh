@@ -1,10 +1,10 @@
 #!/bin/bash
-TARGET=/opt/docker/dockercompose/task-13
+TARGET=/opt/docker/dockercompose/task-13/
 if [ ! -d $TARGET ]; then
   mkdir $TARGET
 fi
 if [  -d $TARGET ]; then
-  echo /opt/docker/dockercompose/task-13/ exist nothing to do
+  echo $TARGET exist nothing to do
 fi
 docker run --network dockercompose-frontend \
 --volume $TARGET:/backup \
