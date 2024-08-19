@@ -8,4 +8,5 @@ if [  -d $TARGET ]; then
 fi
 docker run --network dockercompose-frontend \
 --volume $TARGET:/opt \
-mariadb:lts mariadb-dump mydb --user root --host=mydb --password=rootpassword >/opt/mydb.sql
+mariadb:lts mariadb-dump --help
+#mydb --user root --host=mydb --password=rootpassword >/opt/mydb.sql
