@@ -8,5 +8,5 @@ if [  -d directory ]; then
 fi
 docker run --network dockercompose-frontend \
 --volume $TARGET:/backup \
---rm mariadb:lts mariadb-backup --backup --target-dir=/backup \
+--rm mariadb:lts mariadb-backup --backup --target-dir /backup \
 --databases=mydb --user root --host=mydb --password=rootpassword
