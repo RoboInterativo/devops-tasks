@@ -8,7 +8,7 @@ if [  -d $TARGET ]; then
 fi
 docker run --network dockercompose-frontend \
 --volume $TARGET:/backup \
---rm mariadb:lts mariadb-dump --help
+--rm mariadb:lts mariadb-dump mydb --user root --host=mydb --password=rootpassword
 
 #mariadb-backup --backup --target-dir=/backup \
 #--databases=mydb --user root --host=mydb --password=rootpassword
