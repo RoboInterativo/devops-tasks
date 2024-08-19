@@ -7,5 +7,5 @@ if [  -d $TARGET ]; then
   echo $TARGET exist nothing to do
 fi
 docker run --network dockercompose-frontend \
---volume $TARGET:/backup \
---rm mariadb:lts mariadb-dump mydb --user root --host=mydb --password=rootpassword >/backup/mydb.sql
+--volume $TARGET:/opt \
+--rm mariadb:lts mariadb-dump mydb --user root --host=mydb --password=rootpassword >/opt/mydb.sql
