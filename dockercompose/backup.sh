@@ -2,7 +2,9 @@
 if [ ! -d directory ]; then
   mkdir /opt/docker/dockercompose/task-13/
 fi
-
-docker run --network dockercompose-frontend \
+if [  -d directory ]; then
+  echo /opt/docker/dockercompose/task-13/ exist nothing to do
+fi
+etwork dockercompose-frontend \
 --volume /opt/docker/dockercompose/task-13:/backup \
 --rm mariadb:lts mariadb-backup --help
