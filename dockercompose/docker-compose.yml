@@ -1,0 +1,47 @@
+services:
+  mydb:
+    build:
+      context: .
+      dockerfile: Dockerfiledb
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpassword
+    hostname: mydb
+    volumes:
+      - db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mariadb-admin" ,"ping", "-h", "localhost", "-uroot", "-prootpass"]
+      interval: 10s
+      timeout: 15s
+      retries: 5
+    networks:
+      - frontend
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    #image: phpmyadmin:5.2.0-apache
+    hostname: dockercompose-frontend
+    #container_name: phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mydb
+      #PMA_USER: user
+      #PMA_PASSWORD: userpassword
+
+    networks:
+      - frontend
+    depends_on:
+      - mydb
+    #    condition: service_healthy
+networks:
+  frontend:
+    name: dockercompose-frontend
+    labels:
+      - "network=Custom"
+volumes:
+  db-data:
