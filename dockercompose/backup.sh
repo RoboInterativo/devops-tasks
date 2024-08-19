@@ -1,5 +1,5 @@
 #!/bin/bash
-TARGET= /opt/docker/dockercompose/task-13
+TARGET=/opt/docker/dockercompose/task-13
 if [ ! -d directory ]; then
   mkdir $TARGET
 fi
