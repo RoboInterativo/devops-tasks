@@ -1,4 +1,6 @@
-FROM phpmyadmin:5.2.0-apache
+
+FROM wordpress:latest
+
 
 # Install iputils-ping package
 RUN apt-get update && \
