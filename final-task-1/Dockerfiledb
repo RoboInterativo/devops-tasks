@@ -1,4 +1,4 @@
-FROM mariadb:lts
+FROM mysql:5.17
 
 # RUN apt-get update && \
 #     apt-get install -y iputils-ping && \
