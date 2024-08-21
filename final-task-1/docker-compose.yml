@@ -1,0 +1,51 @@
+services:
+  my_awesome_mysql:
+    build:
+      context: .
+      dockerfile: Dockerfiledb
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: userpassword
+    hostname: mysql
+    volumes:
+      - mysql:/var/lib/mysql
+    # healthcheck:
+    #   test: ["CMD", "mariadb-admin" ,"ping", "-h", "localhost", "-uroot", "-prootpass"]
+    #   interval: 10s
+    #   timeout: 15s
+    #   retries: 5
+    networks:
+      - frontend
+
+  my_awesome_wordpress:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    #image: phpmyadmin:5.2.0-apache
+    #hostname: dockercompose-frontend
+    #container_name: phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: mysql
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+    volumes:
+      - wordpress:/var/www/html
+    #
+    # networks:
+    #   - frontend
+    # depends_on:
+    #   - mydb
+    #    condition: service_healthy
+networks:
+  frontend:
+    name: my_awesome_network
+    labels:
+      - "network=Custom"
+volumes:
+  mysql:
+  wordpress:
