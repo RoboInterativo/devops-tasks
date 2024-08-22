@@ -12,6 +12,7 @@ services:
       MYSQL_PASSWORD: userpassword
     hostname: my-awesome-database
     container_name: my-awesome-database
+    restart: unless-stopped
     ports:
       - 3306:3306
     volumes:
@@ -32,6 +33,7 @@ services:
     #image: phpmyadmin:5.2.0-apache
     hostname: my-my_awesome-wordpress
     container_name: my-awesome-wordpress
+    restart: unless-stopped
     ports:
       - "8080:80"
     environment:
@@ -60,5 +62,3 @@ volumes:
     name: mysql
   wordpress:
     name: wordpress
-restart_policy:
-  condition: on-failure
