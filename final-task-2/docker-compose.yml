@@ -28,7 +28,7 @@ services:
       - mysql_data:/var/lib/mysql
       - mysql_config:/etc/mysql/conf.d
     networks:
-      - petlinic
+      - petclinic
 volumes:
   mysql_data:
   mysql_config:
