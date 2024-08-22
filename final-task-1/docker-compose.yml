@@ -47,7 +47,7 @@ services:
     networks:
        - frontend
     depends_on:
-      - my-awesome-mysql
+      - my-awesome-database
        #condition: service_healthy
 networks:
   frontend:
