@@ -1,5 +1,5 @@
 services:
-  my-awesome-mysql:
+  my-awesome-database:
     build:
       context: .
       dockerfile: Dockerfiledb
@@ -8,11 +8,11 @@ services:
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: userpassword
-    hostname: my-my-awesome-mysql
-    container_name: my-awesome-mysql
+    hostname: my-awesome-database
+    container_name: my-awesome-database
     ports:
       - 3306:3306
-    restart: on-failure 
+    restart: always
     volumes:
       - mysql:/var/lib/mysql
     # healthcheck:
@@ -38,7 +38,7 @@ services:
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DB_NAME: wordpress
-    restart: on-failure
+    restart: always
     volumes:
       - wordpress:/var/www/html
     #
