@@ -1,4 +1,5 @@
 FROM hlebsur/pet_clinic_not_full:latest as build
+RUN ./mvnw compile
 
 EXPOSE 8080
 FROM eclipse-temurin:17-jre-jammy as production
