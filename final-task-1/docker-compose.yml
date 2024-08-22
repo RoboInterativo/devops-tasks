@@ -31,7 +31,7 @@ services:
       dockerfile: Dockerfile
       #jj
     #image: phpmyadmin:5.2.0-apache
-    hostname: my-my_awesome-wordpress
+    hostname: my_awesome-wordpress
     container_name: my-awesome-wordpress
     restart: unless-stopped
     ports:
