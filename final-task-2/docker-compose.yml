@@ -2,8 +2,10 @@
 services:
   petclinic:
     build:
-      context: ./docker_folder
-      dockerfile: Dockerfile_broken
+      context: .
+        #./docker_folder
+      dockerfile: Dockerfile
+      #_broken
     ports:
       - 8000:8000
       - 8082:8080
