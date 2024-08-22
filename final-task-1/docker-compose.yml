@@ -10,7 +10,7 @@ services:
       MYSQL_PASSWORD: userpassword
     hostname: my-my-awesome-mysql
     container_name: my-awesome-mysql
-    ports: -
+    ports: 
       - 3306:3306
     volumes:
       - mysql:/var/lib/mysql
