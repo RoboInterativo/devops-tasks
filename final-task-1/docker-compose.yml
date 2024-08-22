@@ -47,8 +47,8 @@ services:
     #
     # extra_hosts:
     #   - "localhost:host-gateway"
-    # networks:
-    #    - frontend
+    networks:
+        - frontend
     depends_on:
       - my-awesome-database
        #condition: service_healthy
@@ -56,6 +56,8 @@ networks:
   frontend:
     name: my-awesome-network
     driver: bridge
+    driver_opts:
+      com.docker.network.bridge.host_binding_ipv4: "127.0.0.1"
 
 volumes:
   mysql:
