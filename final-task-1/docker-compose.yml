@@ -40,13 +40,13 @@ services:
     volumes:
       - wordpress:/var/www/html
     #
-    extra_hosts:
-      - "localhost:host-gateway"
+    # extra_hosts:
+    #   - "localhost:host-gateway"
     networks:
        - frontend
-    # depends_on:
-    #   - mydb
-    #    condition: service_healthy
+    depends_on:
+      - my-awesome-mysql
+       condition: service_healthy
 networks:
   frontend:
     name: my-awesome-network
