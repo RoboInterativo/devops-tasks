@@ -55,8 +55,8 @@ services:
 networks:
   frontend:
     name: my-awesome-network
-    labels:
-      - "network=Custom"
+    driver: bridge
+    
 volumes:
   mysql:
     name: mysql
