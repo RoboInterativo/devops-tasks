@@ -24,6 +24,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      #jj
     #image: phpmyadmin:5.2.0-apache
     #hostname: dockercompose-frontend
     container_name: my_awesome_wordpress
