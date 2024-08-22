@@ -1,3 +1,4 @@
 
 FROM wordpress:latest
-COPY ./wp-config.php /var/www/html
+RUN rm /var/www/html/wp-config.php
+ADD wp-config.php /var/www/html
