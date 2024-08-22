@@ -9,7 +9,7 @@ services:
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: userpassword
     hostname: mysql
-    container_name: my_awesome_mysql
+    container_name: my-awesome-mysql
     volumes:
       - mysql:/var/lib/mysql
     # healthcheck:
@@ -27,7 +27,7 @@ services:
       #jj
     #image: phpmyadmin:5.2.0-apache
     #hostname: dockercompose-frontend
-    container_name: my_awesome_wordpress
+    container_name: my-awesome-wordpress
     ports:
       - "8080:80"
     environment:
