@@ -9,7 +9,7 @@ services:
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
-      MYSQL_PASSWORD: userpassword
+      MYSQL_PASSWORD: wordpress
     hostname: my-awesome-database
     container_name: my-awesome-database
     restart: unless-stopped
