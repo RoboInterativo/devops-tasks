@@ -56,4 +56,6 @@ networks:
       - "network=Custom"
 volumes:
   mysql:
+    name: mysql
   wordpress:
+    name: wordpress
