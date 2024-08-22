@@ -31,6 +31,6 @@ services:
       - petlinic
 volumes:
   mysql_data:
-  mysql_config
+  mysql_config:
 networks:
   petclinic:
