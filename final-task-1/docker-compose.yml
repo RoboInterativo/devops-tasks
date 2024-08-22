@@ -37,7 +37,7 @@ services:
     ports:
       - "8080:80"
     environment:
-      WORDPRESS_DB_HOST: my-awesome-mysql
+      WORDPRESS_DB_HOST: my-awesome-database
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DB_NAME: wordpress
@@ -56,7 +56,7 @@ networks:
   frontend:
     name: my-awesome-network
     driver: bridge
-    
+
 volumes:
   mysql:
     name: mysql
