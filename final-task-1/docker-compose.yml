@@ -47,8 +47,8 @@ services:
     #
     # extra_hosts:
     #   - "localhost:host-gateway"
-    networks:
-       - frontend
+    # networks:
+    #    - frontend
     depends_on:
       - my-awesome-database
        #condition: service_healthy
