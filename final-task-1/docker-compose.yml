@@ -12,8 +12,6 @@ services:
     container_name: my-awesome-database
     ports:
       - 3306:3306
-    restart_policy:
-        condition: on-failure
     volumes:
       - mysql:/var/lib/mysql
     # healthcheck:
@@ -39,8 +37,7 @@ services:
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DB_NAME: wordpress
-    restart_policy:
-        condition: on-failure
+
     volumes:
       - wordpress:/var/www/html
     #
@@ -61,3 +58,5 @@ volumes:
     name: mysql
   wordpress:
     name: wordpress
+restart_policy:
+  condition: on-failure
