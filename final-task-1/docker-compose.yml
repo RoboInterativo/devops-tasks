@@ -9,7 +9,7 @@ services:
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: userpassword
     hostname: mysql
-    container_name: my_awesome_wordpress
+    container_name: my_awesome_mysql
     volumes:
       - mysql:/var/lib/mysql
     # healthcheck:
