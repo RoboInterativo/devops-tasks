@@ -8,7 +8,7 @@ services:
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: userpassword
-    hostname: mysql
+    hostname: my-my_awesome_mysql
     container_name: my-awesome-mysql
     volumes:
       - mysql:/var/lib/mysql
@@ -26,7 +26,7 @@ services:
       dockerfile: Dockerfile
       #jj
     #image: phpmyadmin:5.2.0-apache
-    #hostname: dockercompose-frontend
+    hostname: my-my_awesome_wordpress
     container_name: my-awesome-wordpress
     ports:
       - "8080:80"
@@ -38,14 +38,14 @@ services:
     volumes:
       - wordpress:/var/www/html
     #
-    # networks:
-    #   - frontend
+    networks:
+       - frontend
     # depends_on:
     #   - mydb
     #    condition: service_healthy
 networks:
   frontend:
-    name: my_awesome_network
+    name: my-awesome-network
     labels:
       - "network=Custom"
 volumes:
