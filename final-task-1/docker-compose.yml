@@ -1,5 +1,5 @@
 services:
-  my_awesome_mysql:
+  my-awesome-mysql:
     build:
       context: .
       dockerfile: Dockerfiledb
@@ -22,7 +22,7 @@ services:
     networks:
       - frontend
 
-  my_awesome_wordpress:
+  my-awesome-wordpress:
     build:
       context: .
       dockerfile: Dockerfile
