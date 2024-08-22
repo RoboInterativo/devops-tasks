@@ -14,7 +14,7 @@ services:
       - ./:/app
     depends_on:
       - mysqlserver
-    
+
   mysqlserver:
     image: hlebsur/mysql:8
     ports:
@@ -31,5 +31,6 @@ services:
       - petlinic
 volumes:
   mysql_data:
+  mysql_config
 networks:
   petclinic:
