@@ -23,7 +23,7 @@ services:
     #   timeout: 15s
     #   retries: 5
     networks:
-      - my-awesome-network
+      - my_awesome_network
 
   my-awesome-wordpress:
     build:
@@ -48,12 +48,12 @@ services:
     # extra_hosts:
     #   - "localhost:host-gateway"
     networks:
-       - my-awesome-network
+       - my_awesome_network
     depends_on:
       - my-awesome-database
        #condition: service_healthy
 networks:
-  my-awesome-network:
+  my_awesome_network:
     name: my-awesome-network
     driver: bridge
 
