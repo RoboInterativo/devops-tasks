@@ -15,7 +15,7 @@ class APIClient:
     def _get_authenticity_token(self, html_content):
         """Extract CSRF token from HTML"""
         soup = BeautifulSoup(html_content, 'html.parser')
-        token = soup.find('meta', {'name': 'authenticity_token'})
+        token = soup.find('input', {'name': 'authenticity_token'})
         return token['content'] if token else None
 
     def login(self, username, password):
