@@ -13,3 +13,9 @@ class TestProjectsAPI:
             self.client.list_projects()
         except Exception as e:
             pytest.fail(f"API client is not properly authenticated: {str(e)}")
+    def login(self, username: str, password: str) -> None:
+        """Authenticate user."""
+        login_url = f"{self.base_url}/login"
+        data = {'login': username, 'password': password}
+        response = self.session.post(login_url, data=data)
+        response.raise_for_status()
