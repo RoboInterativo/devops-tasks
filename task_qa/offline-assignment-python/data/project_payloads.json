@@ -1,0 +1,10 @@
+{
+  "new_project": {
+    "name": "Test Project 1",
+    "description": "This is a description for Test Project 1."
+  },
+  "updated_project": {
+    "name": "Updated Test Project",
+    "description": "This project has been updated."
+  }
+}
