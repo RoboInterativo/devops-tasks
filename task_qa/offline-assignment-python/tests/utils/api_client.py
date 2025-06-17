@@ -11,11 +11,11 @@ class APIClient:
             'User-Agent': 'Mozilla/5.0',
             'Accept': 'text/html,application/xhtml+xml',
         })
-        
+
     def _get_authenticity_token(self, html_content):
         """Extract CSRF token from HTML"""
         soup = BeautifulSoup(html_content, 'html.parser')
-        token = soup.find('meta', {'name': 'csrf-token'})
+        token = soup.find('meta', {'name': 'authenticity_token'})
         return token['content'] if token else None
 
     def login(self, username, password):
