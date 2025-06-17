@@ -8,7 +8,7 @@ def api_client():
 
     # Authenticate with test credentials
     try:
-        client.login(username="admin", password="password")
+        client.login(username="admin", password="1234567890")
     except Exception as e:
         pytest.fail(f"Authentication failed: {str(e)}")
 
