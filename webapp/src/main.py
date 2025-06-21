@@ -1,80 +1,49 @@
-from flask import Flask, render_template, request, jsonify
-import os, requests, json
-import logging
-import requests as req
+from flask import Flask, render_template, request, redirect, url_for
+from flask_sqlalchemy import SQLAlchemy
 
+app = Flask(__name__)
 
-logging.basicConfig(level=logging.DEBUG)
+# Конфигурация базы данных
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://username:password@localhost/db_name'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-DB=[]
-TOKEN = "1918704338:AAGpQ8t7cjQhxXDvSvKiyA02mGpNit4kac8"
-BASE_URL = f'https://api.telegram.org/bot{TOKEN}/'
+db = SQLAlchemy(app)
 
+# Модель данных
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
 
-def create_app():
-    app = Flask(__name__)
+    def __repr__(self):
+        return f'<User {self.username}>'
 
-    @app.route('/api')
-    def index():
-        return render_template('index.html')
+# Создание таблиц (выполнить один раз)
+@app.before_first_request
+def create_tables():
+    db.create_all()
 
-    # @app.route('/webhook/info')
-    # def echo():
-    #     method = "getWebhookInfo"
-    #     url = f"https://api.telegram.org/bot{TOKEN}/{method}"
-    #     r = requests.get(url)
-    #     return r.json()
+# Маршруты
+@app.route('/')
+def index():
+    users = User.query.all()
+    return render_template('index.html', users=users)
 
-    # @app.route('/setWebhook')
-    # def echo_set():
-    #     data = {}
-    #     data["url"] = "https://timurg.geekslore.ru/webhook"
-    #     method = "setWebhook"
-    #     url = f"https://api.telegram.org/bot{TOKEN}/{method}"
-    #     r = requests.post(url, json = data)
-    #     return r.json()
+@app.route('/add', methods=['POST'])
+def add_user():
+    username = request.form['username']
+    email = request.form['email']
+    new_user = User(username=username, email=email)
+    db.session.add(new_user)
+    db.session.commit()
+    return redirect(url_for('index'))
 
-    def send_message(chat_id, text):
-        """Отправка сообщения через API Telegram"""
-        url = BASE_URL + 'sendMessage'
-        payload = {
-            'chat_id': chat_id,
-            'text': text
-        }
-        requests.post(url, json=payload)
-
-    @app.route('/api/webhook', methods=['POST'])
-    def webhook():
-        data = request.json
-        print(data)
-        DB.append(data)
-
-        # Обработка входящего сообщения
-        if 'message' in data:
-            chat_id = data['message']['chat']['id']
-            message_text = data['message'].get('text', '')
-
-            # Ответ на команду /start
-            if message_text == '/start':
-                send_message(chat_id, 'Привет! Я простой бот.')
-            elif message_text == '/help':
-                send_message(chat_id, 'Привет! сделать бота чатgpt.')
-            else:
-                # Эхо-ответ
-                send_message(chat_id, f'Вы написали: {message_text}')
-
-        return 'ok', 200
-
-    @app.route('/api/logs', methods=['POST'])
-    def logs():
-        return jsonify(DB)
-
-
-    return app
-
-
-
-app = create_app()  # Создаем экземпляр приложения
+@app.route('/delete/<int:id>')
+def delete_user(id):
+    user = User.query.get_or_404(id)
+    db.session.delete(user)
+    db.session.commit()
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5555)
+    app.run(debug=True,host='0.0.0.0', port=5555)
