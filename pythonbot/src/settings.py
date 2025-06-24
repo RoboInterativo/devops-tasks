@@ -1,0 +1,2 @@
+admin_ids = ["TELEGRAM ID OF ADMIN"]
+TOKEN = '6451090037:AAGJF_VCV_qeedbK4vLWE3nONqwLd-Jc8a8'
