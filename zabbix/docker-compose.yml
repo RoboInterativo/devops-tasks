@@ -9,11 +9,11 @@ services:
       - MYSQL_DATABASE="zabbix"
       - MYSQL_USER="zabbix"
       - MYSQL_PASSWORD="zabbix_pwd"
-      - MYSQL_ROOT_PASSWORD="root_pwd"
+      - MYSQL_ROOT_PASSWORD="rootpwd"
     restart: unless-stopped
     image: mysql:8.0-oracle
     volumes:
-      - mysql-data:/var/lib/mysql
+      - mysql-data2:/var/lib/mysql
 
   zabbix_java_gateway:
     image: "zabbix/zabbix-java-gateway:alpine-7.4-latest"
@@ -38,7 +38,7 @@ services:
       - MYSQL_DATABASE="zabbix"
       - MYSQL_USER="zabbix"
       - MYSQL_PASSWORD="zabbix_pwd"
-      - MYSQL_ROOT_PASSWORD="root_pwd"
+      - MYSQL_ROOT_PASSWORD="rootpwd"
       - ZBX_JAVAGATEWAY="zabbix-java-gateway"
     ports:  # Fixed indentation (now aligned with 'environment')
       - "10051:10051"
@@ -53,7 +53,7 @@ services:
       - MYSQL_DATABASE="zabbix"
       - MYSQL_USER="zabbix"
       - MYSQL_PASSWORD="zabbix_pwd"
-      - MYSQL_ROOT_PASSWORD="root_pwd"
+      - MYSQL_ROOT_PASSWORD="rootpwd"
     networks:
       - zabbix-net
     ports:
@@ -64,4 +64,4 @@ networks:
     driver: bridge
 
 volumes:
-  mysql-data:
+  mysql-data2:
