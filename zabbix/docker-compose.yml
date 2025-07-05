@@ -1,4 +1,3 @@
----
 version: '3.8'
 services:
   mysql-server:
@@ -10,12 +9,10 @@ services:
       - MYSQL_USER="zabbix"
       - MYSQL_PASSWORD="zabbix_pwd"
       - MYSQL_ROOT_PASSWORD="root_pwd"
-
     restart: unless-stopped
     image: mysql:8.0-oracle
     volumes:
       - mysql-data:/var/lib/mysql
-
 
   zabbix_java_gateway:
     image: "zabbix/zabbix-java-gateway:alpine-7.4-latest"
@@ -27,9 +24,7 @@ services:
       - MYSQL_USER="zabbix"
       - MYSQL_PASSWORD="zabbix_pwd"
       - MYSQL_ROOT_PASSWORD="root_pwd"
-
     restart: unless-stopped
-
 
   zabbix-server-mysql:
     image: "zabbix/zabbix-server-mysql:alpine-7.4-latest"
@@ -37,7 +32,6 @@ services:
     networks:
       - zabbix-net
     restart: unless-stopped
-
     environment:
       - DB_SERVER_HOST="mysql-server"
       - MYSQL_DATABASE="zabbix"
@@ -45,8 +39,9 @@ services:
       - MYSQL_PASSWORD="zabbix_pwd"
       - MYSQL_ROOT_PASSWORD="root_pwd"
       - ZBX_JAVAGATEWAY="zabbix-java-gateway"
-     ports:
-       - "10051:10051"
+    ports:  # Fixed indentation (now aligned with 'environment')
+      - "10051:10051"
+
   zabbix-web-nginx-mysql:
     container_name: zabbix-web-nginx-mysql
     restart: unless-stopped
@@ -61,7 +56,8 @@ services:
     networks:
       - zabbix-net
     ports:
-       - 80:8080
+      - 80:8080
+
 networks:
   zabbix-net:
     driver: bridge
