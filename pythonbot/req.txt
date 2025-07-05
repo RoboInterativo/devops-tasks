@@ -1,0 +1,4 @@
+pymysql
+flask
+requests
+aiogram
