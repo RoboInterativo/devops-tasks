@@ -6,54 +6,54 @@ services:
     networks:
       - zabbix-net
     environment:
-      - MYSQL_DATABASE="zabbix"
-      - MYSQL_USER="zabbix"
-      - MYSQL_PASSWORD="zabbix_pwd"
-      - MYSQL_ROOT_PASSWORD="rootpwd"
+      - MYSQL_DATABASE=zabbix
+      - MYSQL_USER=zabbix
+      - MYSQL_PASSWORD=zabbix_pwd
+      - MYSQL_ROOT_PASSWORD=rootpwd
     restart: unless-stopped
     image: mysql:8.0-oracle
     volumes:
       - mysql-data2:/var/lib/mysql
 
   zabbix_java_gateway:
-    image: "zabbix/zabbix-java-gateway:alpine-7.4-latest"
+    image: zabbix/zabbix-java-gateway:alpine-7.4-latest
     container_name: zabbix-java-gateway
     networks:
       - zabbix-net
     environment:
-      - MYSQL_DATABASE="zabbix"
-      - MYSQL_USER="zabbix"
-      - MYSQL_PASSWORD="zabbix_pwd"
-      - MYSQL_ROOT_PASSWORD="rootpwd"
+      - MYSQL_DATABASE=zabbix
+      - MYSQL_USER=zabbix
+      - MYSQL_PASSWORD=zabbix_pwd
+      - MYSQL_ROOT_PASSWORD=rootpwd
     restart: unless-stopped
 
   zabbix-server-mysql:
-    image: "zabbix/zabbix-server-mysql:alpine-7.4-latest"
+    image: zabbix/zabbix-server-mysql:alpine-7.4-latest
     container_name: zabbix-server-mysql
     networks:
       - zabbix-net
     restart: unless-stopped
     environment:
-      - DB_SERVER_HOST="mysql-server"
-      - MYSQL_DATABASE="zabbix"
-      - MYSQL_USER="zabbix"
-      - MYSQL_PASSWORD="zabbix_pwd"
-      - MYSQL_ROOT_PASSWORD="rootpwd"
-      - ZBX_JAVAGATEWAY="zabbix-java-gateway"
+      - DB_SERVER_HOST=mysql-server
+      - MYSQL_DATABASE=zabbix
+      - MYSQL_USER=zabbix
+      - MYSQL_PASSWORD=zabbix_pwd
+      - MYSQL_ROOT_PASSWORD=rootpwd
+      - ZBX_JAVAGATEWAY=zabbix-java-gateway
     ports:  # Fixed indentation (now aligned with 'environment')
-      - "10051:10051"
+      - 10051:10051
 
   zabbix-web-nginx-mysql:
     container_name: zabbix-web-nginx-mysql
     restart: unless-stopped
     image: zabbix/zabbix-web-nginx-mysql:alpine-7.4-latest
     environment:
-      - ZBX_SERVER_HOST="zabbix-server-mysql"
-      - DB_SERVER_HOST="mysql-server"
-      - MYSQL_DATABASE="zabbix"
-      - MYSQL_USER="zabbix"
-      - MYSQL_PASSWORD="zabbix_pwd"
-      - MYSQL_ROOT_PASSWORD="rootpwd"
+      - ZBX_SERVER_HOST=zabbix-server-mysql
+      - DB_SERVER_HOST=mysql-server
+      - MYSQL_DATABASE=zabbix
+      - MYSQL_USER=zabbix
+      - MYSQL_PASSWORD=zabbix_pwd
+      - MYSQL_ROOT_PASSWORD=rootpwd
     networks:
       - zabbix-net
     ports:
