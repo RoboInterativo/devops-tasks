@@ -48,14 +48,6 @@ services:
        - 10051:10051
   zabbix-web-nginx-mysql:
     container_name: zabbix-web-nginx-mysql
-    networks:
-      - zabbix-net
-    environment:
-      - MYSQL_DATABASE="zabbix"
-      - MYSQL_USER="zabbix"
-      - MYSQL_PASSWORD="zabbix_pwd"
-      - MYSQL_ROOT_PASSWORD="root_pwd"
-
     restart: unless-stopped
     image: zabbix/zabbix-web-nginx-mysql:alpine-7.4-latest
     environment:
