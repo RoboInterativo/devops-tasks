@@ -51,12 +51,12 @@ services:
     restart: unless-stopped
     image: zabbix/zabbix-web-nginx-mysql:alpine-7.4-latest
     environment:
-       - ZBX_SERVER_HOST="zabbix-server-mysql"
-       - DB_SERVER_HOST="mysql-server"
-       - MYSQL_DATABASE="zabbix"
-       - MYSQL_USER="zabbix"
-       - MYSQL_PASSWORD="zabbix_pwd"
-       - MYSQL_ROOT_PASSWORD="root_pwd"
+      - ZBX_SERVER_HOST="zabbix-server-mysql"
+      - DB_SERVER_HOST="mysql-server"
+      - MYSQL_DATABASE="zabbix"
+      - MYSQL_USER="zabbix"
+      - MYSQL_PASSWORD="zabbix_pwd"
+      - MYSQL_ROOT_PASSWORD="root_pwd"
      networks:
        - zabbix-net
      ports:
