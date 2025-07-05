@@ -29,7 +29,7 @@ services:
     restart: unless-stopped
 
 
-  zabbix-server-mysql:
+  zabbixservermysql:
     image: "zabbix/zabbix-server-mysql:alpine-7.4-latest"
     container_name: zabbix-server-mysql
     networks:
