@@ -16,6 +16,7 @@ services:
       - mysql-data:/var/lib/mysql
 
   zabbix-java-gateway:
+    image: "zabbix/zabbix-java-gateway:alpine-7.4-latest"
     container_name: zabbix-java-gateway
     networks:
       - zabbix-net
@@ -26,14 +27,15 @@ services:
       - MYSQL_ROOT_PASSWORD="root_pwd"
 
     restart: unless-stopped
-    image: zabbix/zabbix-java-gateway:alpine-7.4-latest
+
 
   zabbix-server-mysql:
+    image: "zabbix/zabbix-server-mysql:alpine-7.4-latest"
     container_name: zabbix-server-mysql
     networks:
       - zabbix-net
     restart: unless-stopped
-    image: "zabbix/zabbix-server-mysql:alpine-7.4-latest"
+
     environment:
       - DB_SERVER_HOST="mysql-server"
       - MYSQL_DATABASE="zabbix"
