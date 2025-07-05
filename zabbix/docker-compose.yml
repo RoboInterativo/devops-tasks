@@ -33,7 +33,7 @@ services:
     networks:
       - zabbix-net
     restart: unless-stopped
-    image: zabbix/zabbix-server-mysql:alpine-7.4-latest
+    image: "zabbix/zabbix-server-mysql:alpine-7.4-latest"
     environment:
       - DB_SERVER_HOST="mysql-server"
       - MYSQL_DATABASE="zabbix"
