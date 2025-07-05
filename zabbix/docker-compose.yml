@@ -1,6 +1,7 @@
 version: '3.8'
 services:
   mysql-server:
+    hostname: mysql-server
     container_name: mysql-server
     networks:
       - zabbix-net
