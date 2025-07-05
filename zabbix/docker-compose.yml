@@ -16,7 +16,7 @@ services:
       - mysql-data:/var/lib/mysql
 
 
-  zabbix-java-gateway:
+  zabbix_java_gateway:
     image: "zabbix/zabbix-java-gateway:alpine-7.4-latest"
     container_name: zabbix-java-gateway
     networks:
