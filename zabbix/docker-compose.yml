@@ -66,3 +66,9 @@ services:
        - zabbix-net
      ports:
        - 80:8080
+networks:
+  zabbix-net:
+    driver: bridge
+
+volumes:
+  mysql-data:
