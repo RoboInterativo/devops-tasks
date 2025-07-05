@@ -1,0 +1,7 @@
+packs:
+  - nginx
+  - php-fpm
+giturl: https://github.com/RoboInterativo/firststeps.git
+
+serg_key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDRyfPGesDhe5yPblAJo57qo/ts+3obx4KW6Zu+lPqlAkHP8FEJbE9vK2LzeILKq8wErrcNbAJO63893bp+AAk7M/dik3fDgDRAYQAYHaKTli8qWaCM0QGP8WATtBPhwUOMI7a+223Fxobcpv3+BAyFo+Er5kiv7DVgxlpdBCeHlglC69VkroA1Vz6Ws1Lbbczsva2bLYqx6/DItx1Hl4M7U4vDvRcLvnn19m1fcmjAESDUdxTn+VQOjdIRPEwM9JOLfUp7n3xIbNpJ9sK2U+AqW+RvzKdUuPXckanEcu5dOaWOlmHGzOLfDsFeSnv30NXVEuz6tNlXlrPK3aGG0Z6TQHM7Qc/XyJcoaWKwrx8f+jRYc++CLA6+Ff9ReUo6JLGRi4wzykP0gZwiY1l1/FVKCS517NJ0XG6ZDOa8LuFrAtKrvyEEeMRZrawUF629zEvlNAZSGkvTNn7qkfa8Mayq1NZpuz6ubKruUN0Z9clsQFb3CauzdZyShDiUJ7SxAS0= hp@DESKTOP-EU4JA0T
+'

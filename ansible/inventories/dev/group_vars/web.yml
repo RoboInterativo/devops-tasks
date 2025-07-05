@@ -1,0 +1,4 @@
+virtual_ip: 172.16.1.247
+interface: ens33
+virtual_router_id: 51
+auth_pass: P@ssw0rd

@@ -1,0 +1,27 @@
+- name: Download foo.conf
+  get_url:
+    url: "{{mediawiki_url}}"
+    dest: /tmp/mediawiki.zip
+
+- name: Unarchive a file that is already on the remote machine
+  ansible.builtin.unarchive:
+    src: /tmp/mediawiki.zip
+    dest: /var/www/html
+    remote_src: yes
+
+- name: Создание конфигурационного файла LocalSettings.php
+  template:
+    src: "L.php"
+    dest: "{{ mediawiki_install_dir }}/LocalSettings.php"
+    owner: "{{ web_server_user }}"
+    group: "{{ web_server_user }}"
+    unsafe_writes: yes
+    mode: "0644"
+
+- name: Give insecure permissions to an existing file
+  ansible.builtin.file:
+    path: /var/www/html
+    owner: www-data
+    group: www-data
+    mode: '0755'
+    recurse: yes

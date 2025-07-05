@@ -1,0 +1,34 @@
+---
+- name: newservers_all
+  hosts: all
+
+  tasks:
+    - name: Run
+      ping:
+
+    - name: Install a list of packages
+      apt:
+        pkg: "{{ packs }}"
+
+    - name: Replace after the expression till the end of the file (requires Ansible >= 2.4)
+      ansible.builtin.replace:
+        path: /var/www/html/index.nginx-debian.html
+        after: 'Welcome to nginx!'
+        regexp: '^(.+)$'
+        replace: '{{ansible_ssh_host}}'
+
+- name: newservers_lb
+  hosts: lb
+
+  tasks:
+      - name: Copy file with owner and permissions
+        copy:
+          src: default2
+          dest: /etc/nginx/sites-available/default
+          force: yes
+
+      - name: Restart
+        ansible.builtin.systemd:
+          state: restarted
+          daemon_reload: true
+          name: nginx

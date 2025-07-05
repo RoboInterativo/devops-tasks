@@ -1,0 +1,45 @@
+stages:
+
+  - deploy
+
+variables:
+
+
+    DOCKER_AUTH_CONFIG: |
+          {
+          	"auths": {
+          		"docker-int.robointerativo.org": {
+          			"auth": "bmV4dXN1c2VyOnRDJTNRQTk1SDBTZzIyMHg="
+          		},
+            	"docker-proxy.robointerativo.org": {
+          			"auth": "bmV4dXN1c2VyOnRDJTNRQTk1SDBTZzIyMHg="
+          		}
+          	}
+          }
+
+
+
+deploy:
+  stage: deploy
+  when: manual
+  image:
+    name:  docker-int.robointerativo.org/ansible:210
+  variables:
+      ANSIBLE_HOST_KEY_CHECKING: 'false'
+      ANSIBLE_FORCE_COLOR: 'true'
+      # ANSIBLE_PERSISTENT_COMMAND_TIMEOUT: 30
+    #
+
+  script:
+    - chmod 600 mykey
+    - "ls -li"
+    - "pwd"
+    - "echo $USER && users"
+    - "ansible --version"
+    - "ansible-playbook  -vv -u root -i inventories/dev/hosts --timeout 30 --key-file mykey add_ssh.yml "
+
+
+
+
+  tags:
+    - stage

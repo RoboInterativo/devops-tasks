@@ -1,0 +1,8 @@
+- name: Include tasks for installing dependencies
+  include_tasks: install_dependencies.yml
+
+# - name: Include tasks for installing dependencies
+#   include_tasks: configure_db.yml
+
+- name: Include tasks for installing dependencies
+  include_tasks: install_wikimedia.yml

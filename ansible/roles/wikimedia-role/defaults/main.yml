@@ -1,0 +1,7 @@
+wikimedia_version: "1.39"  # Версия WikiMedia
+wikimedia_db_name: "wikimedia_db"
+wikimedia_db_user: "wikimedia_user"
+wikimedia_db_password: "securepassword"
+wikimedia_domain: "wiki.example.com"
+wikimedia_admin_email: "admin@example.com"
+mariadb_root_password: "my_secure_root_password"  # Переопределяем root-пароль

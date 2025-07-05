@@ -1,0 +1,16 @@
+services:
+  backend:
+    image: nginx
+    ports:
+        - '80:80'
+    volumes:
+     - ./html:/usr/share/nginx/html
+     - ./conf:/etc/nginx/conf.d
+
+  php:
+    image: php:8.1-fpm-alpine3.20
+    hostname: php
+    #ports:
+    #    - '80:80'
+    volumes:
+     - ./html:/usr/share/nginx/html

@@ -1,0 +1,8 @@
+---
+- name: newservers_init
+  hosts: web
+
+
+  tasks:
+    - name: Run
+      ping:

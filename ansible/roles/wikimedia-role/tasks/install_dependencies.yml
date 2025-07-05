@@ -1,0 +1,33 @@
+- name: Install required packages
+  apt:
+    name:
+      - php
+      - php-mysql
+      - php-xml
+      - php-mbstring
+      - php-curl
+      - php-apcu
+      - mariadb-server
+      - nginx
+      - php-fpm
+      - unzip
+      - python3-pip
+      - python3-mysql.connector
+      - python3-mysqldb
+      - php-intl
+
+
+    state: present
+    update_cache: yes
+
+# - name: Install MyApp using one of the remote protocols (bzr+,hg+,git+)
+#   pip:
+#     name: MySQL-python
+#rest
+
+- name: Copy file with owner and permissions
+  copy:
+    src: default
+    dest: /etc/nginx/sites-available/
+    force: yes
+    notify: Restart Nginx

@@ -1,0 +1,3 @@
+mediawiki_url: https://releases.wikimedia.org/mediawiki/1.43/mediawiki-1.43.0.zip
+mediawiki_install_dir:  /var/www/html/mediawiki-1.43.0
+web_server_user: www-data

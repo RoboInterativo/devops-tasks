@@ -1,0 +1,7 @@
+- hosts: web
+  roles:
+    - role: wikimedia-role
+      vars:
+        wikimedia_db_name: "my_wiki_db"
+        wikimedia_db_user: "wiki_user"
+        wikimedia_db_password: "mysecurepassword"

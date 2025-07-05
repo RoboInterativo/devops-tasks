@@ -1,0 +1,34 @@
+---
+- name: newservers_init
+  hosts: web
+
+
+  tasks:
+    - name: Run
+      ping:
+
+    - name: debug
+      debug:
+        var: packs
+
+
+    - name: Install a list of packages
+      apt:
+        pkg: "{{ packs }}"
+
+    - name: Copy file with owner and permissions
+      copy:
+        src: default
+        dest: /etc/nginx/sites-available/
+        force: yes
+
+    - name: Copy u sing inline content
+      copy:
+        content: '<?php phpinfo(); ?>'
+        dest: /var/www/html/test.php
+
+    - name: restart service cron on centos, in all cases, also issue daemon-reload to pick up config changes
+      systemd:
+        state: restarted
+
+        name: nginx

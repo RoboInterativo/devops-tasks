@@ -1,0 +1,13 @@
+---
+- name: newservers_all
+  hosts: web
+
+  tasks:
+    - name: Run
+      ping:
+
+    - name: Add a key on server
+      ansible.builtin.lineinfile:
+        path: /root/.ssh/authorized_keys
+        line: "{{serg_key}}"
+        create: yes

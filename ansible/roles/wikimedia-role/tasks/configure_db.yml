@@ -1,0 +1,61 @@
+---
+# tasks/configure_db.yml
+# Задачи для настройки MariaDB/MySQL
+
+- name: Ensure MariaDB server is installed
+  apt:
+    name: mariadb-server
+    state: present
+
+- name: Ensure MariaDB service is running and enabled
+  systemd:
+    name: mariadb
+    state: started
+    enabled: yes
+
+- name: Set root password for MariaDB
+  mysql_user:
+    name: root
+    password: "{{ mariadb_root_password }}"
+    host: localhost
+    check_implicit_admin: yes
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+    state: present
+
+- name: Remove anonymous users
+  mysql_user:
+    name: ''
+    host: localhost
+    state: absent
+    login_user: root
+    login_password: "{{ mariadb_root_password }}"
+
+- name: Remove test database
+  mysql_db:
+    name: test
+    state: absent
+    login_user: root
+    login_password: "{{ mariadb_root_password }}"
+
+- name: Create database for WikiMedia
+  mysql_db:
+    name: "{{ wikimedia_db_name }}"
+    state: present
+    login_user: root
+    login_password: "{{ mariadb_root_password }}"
+
+- name: Create user for WikiMedia database
+  mysql_user:
+    name: "{{ wikimedia_db_user }}"
+    password: "{{ wikimedia_db_password }}"
+    host: localhost
+    priv: "{{ wikimedia_db_name }}.*:ALL"
+    state: present
+    login_user: root
+    login_password: "{{ mariadb_root_password }}"
+
+#- name: Flush privileges
+#  mysql_query:
+#    login_user: root
+#    login_password: "{{ mariadb_root_password }}"
+#    query: FLUSH PRIVILEGES
