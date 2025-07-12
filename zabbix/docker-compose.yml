@@ -33,6 +33,8 @@ services:
     networks:
       - zabbix-net
     restart: unless-stopped
+    volumes:
+      - /opt/zabbix.psk:/etc/zabbix/zabbix_server.psk:ro
     environment:
       - DB_SERVER_HOST=mysql-server
       - MYSQL_DATABASE=zabbix
@@ -40,6 +42,9 @@ services:
       - MYSQL_PASSWORD=zabbix_pwd
       - MYSQL_ROOT_PASSWORD=rootpwd
       - ZBX_JAVAGATEWAY=zabbix-java-gateway
+      - ZBX_TLSACCEPT=psk
+      - ZBX_TLSPSKIDENTITY="My_PSK_Server"  # Произвольное имя
+      - ZBX_TLSPSKFILE=/etc/zabbix/zabbix_server.psk
     ports:  # Fixed indentation (now aligned with 'environment')
       - 10051:10051
 
