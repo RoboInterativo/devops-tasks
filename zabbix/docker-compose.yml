@@ -43,7 +43,7 @@ services:
       - MYSQL_ROOT_PASSWORD=rootpwd
       - ZBX_JAVAGATEWAY=zabbix-java-gateway
       - ZBX_TLSACCEPT=psk
-      - ZBX_TLSPSKIDENTITY="My_PSK_Server"  # Произвольное имя
+      - ZBX_TLSPSKIDENTITY=My_PSK_Server
       - ZBX_TLSPSKFILE=/etc/zabbix/zabbix_server.psk
     ports:  # Fixed indentation (now aligned with 'environment')
       - 10051:10051
