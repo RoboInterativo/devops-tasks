@@ -59,11 +59,11 @@ services:
       - MYSQL_USER=zabbix
       - MYSQL_PASSWORD=zabbix_pwd
       - MYSQL_ROOT_PASSWORD=rootpwd
-    
+
     volumes:
       - /opt/zabbix/ssl/ssl.crt:/etc/ssl/zabbix.crt
       - /opt/zabbix/ssl/ssl.key:/etc/ssl/zabbix.key
-      - ./nginx-ssl.conf:/etc/nginx/conf.d/ssl.conf
+      - ./nginx-ssl.conf://etc/nginx/http.d/ssl.conf
     networks:
       - zabbix-net
     ports:
