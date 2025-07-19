@@ -64,7 +64,7 @@ services:
       - /opt/zabbix/ssl/ssl.crt:/etc/ssl/nginx/ssl.crt
 
       - /opt/zabbix/ssl/ssl.key:/etc/ssl/nginx/ssl.key
-      - /opt/zabbix/ssl/dhparam.pem :/etc/ssl/nginx/dhparam.pem 
+      - /opt/zabbix/ssl/dhparam.pem:/etc/ssl/nginx/dhparam.pem 
       #zabbix.geekslore.ru;
       - ./ssl.conf:/etc/zabbix/nginx.conf
     networks:
