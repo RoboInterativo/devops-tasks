@@ -64,7 +64,7 @@ services:
       - /opt/zabbix/ssl/ssl.crt:/etc/ssl/nginx/ssl.crt
 
       - /opt/zabbix/ssl/ssl.key:/etc/ssl/nginx/ssl.key
-      - ./ssl.conf:/etc/nginx/http.d/nginx.conf
+      - ./ssl.conf:/etc/zabbix/nginx.conf
     networks:
       - zabbix-net
     ports:
