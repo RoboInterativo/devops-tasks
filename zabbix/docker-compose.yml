@@ -61,8 +61,15 @@ services:
       - MYSQL_ROOT_PASSWORD=rootpwd
     networks:
       - zabbix-net
-    ports:
-      - 80:8080
+volumes:
+    - /opt/zabbix/ssl/ssl.crt:/etc/ssl/zabbix.crt
+    - /opt/zabbix/ssl/ssl.key:/etc/ssl/zabbix.key
+    - ./nginx-ssl.conf:/etc/nginx/conf.d/ssl.conf
+  networks:
+    - zabbix-net
+  ports:
+    - 443:8443  # HTTPS
+
 
 networks:
   zabbix-net:
